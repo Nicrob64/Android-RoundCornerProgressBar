@@ -89,6 +89,8 @@ limitations under the License.
                 app:rcProgressColor="@color/custom_progress_green_progress"
                 app:rcRadius="10dp"
                 app:rcSecondaryProgress="60"
+                app:rcSeekAllowed="true"
+                app:rcSeekProgressType="secondary"
                 app:rcSecondaryProgressColor="@color/custom_progress_green_progress_half" />
 
             <TextView

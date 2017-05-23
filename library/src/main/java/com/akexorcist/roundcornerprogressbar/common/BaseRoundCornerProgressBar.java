@@ -142,6 +142,8 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
         isUserSeekable = typedArray.getBoolean(R.styleable.RoundCornerProgress_rcSeekAllowed, false);
 
+		userSeekableProgressBar = typedArray.getInt(R.styleable.RoundCornerProgress_rcSeekProgressType, 0);
+
         max = typedArray.getFloat(R.styleable.RoundCornerProgress_rcMax, DEFAULT_MAX_PROGRESS);
         progress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcProgress, DEFAULT_PROGRESS);
         secondaryProgress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcSecondaryProgress, DEFAULT_SECONDARY_PROGRESS);
@@ -325,6 +327,10 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         this.isUserSeekable = isUserSeekable;
     }
 
+    public void setUserSeekableProgressBar(int progressBarNumber){
+		this.userSeekableProgressBar = progressBarNumber;
+	}
+
     public void setProgress( float progress )
     {
         setProgress(progress, false);
@@ -356,7 +362,10 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         return secondaryProgress;
     }
 
-    public void setSecondaryProgress(float secondaryProgress) {
+    public void setSecondaryProgress(float secondaryProgress){
+		setSecondaryProgress(secondaryProgress, false);
+	}
+    public void setSecondaryProgress(float secondaryProgress, boolean fromUser) {
         if (secondaryProgress < 0)
             this.secondaryProgress = 0;
         else if (secondaryProgress > max)
@@ -366,6 +375,8 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         drawSecondaryProgress();
         if(progressChangedListener != null)
             progressChangedListener.onProgressChanged(getId(), this.secondaryProgress, false, true);
+		if( mOnSeekBarChangeListener != null )
+		{ mOnSeekBarChangeListener.onProgressChanged(this, this.progress, fromUser); }
     }
 
     public int getProgressBackgroundColor() {
@@ -529,6 +540,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
 
     // Whether the progress bar is seekable.
     protected boolean isUserSeekable;
+	protected int userSeekableProgressBar = 0;
 
     /**
      * On touch, this offset plus the scaled value from the position of the
@@ -703,7 +715,15 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         final float max = getMax();
         progress += scale * max;
 
-        setProgress(progress, true);
+		switch (userSeekableProgressBar){
+			case 0:
+				setProgress(progress, true);
+				break;
+			case 1:
+				setSecondaryProgress(progress);
+				break;
+		}
+
     }
 
     /**
