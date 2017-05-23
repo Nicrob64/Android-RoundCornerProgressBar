@@ -1,5 +1,120 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Round%20Corner%20Progress%20Bar-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1375) [![Build Status](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar.svg?branch=master)](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/RoundCornerProgressBar/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/RoundCornerProgressBar)
+<<<<<<< HEAD
 
+=======
+ 
+ 
+Instruction for version 2.0.0 or later isn't yet updated now. And I change attribute name, follow this
+
+*RoundCornerProgressBar*
+Attribute
+```
+rcProgress
+rcSecondaryProgress
+rcMax
+rcRadius
+rcBackgroundPadding
+rcReverse
+rcSeekAllowed
+rcProgressColor
+rcSecondaryProgressColor
+rcBackgroundColor
+```
+
+Method
+```
+int getRadius()
+void setRadius(int radius)
+int getPadding()
+void setPadding(int padding)
+float getMax()
+void setMax(float max)
+
+float getProgress()
+void setProgress(float progress)
+float getSecondaryProgressWidth()
+float getSecondaryProgress()
+void setSecondaryProgress(float secondaryProgress)
+
+int getProgressBackgroundColor()
+void setProgressBackgroundColor(int colorBackground)
+int getProgressColor()
+void setProgressColor(int colorProgress)
+int getSecondaryProgressColor()
+void setSecondaryProgressColor(int colorSecondaryProgress)
+
+boolean isReverse()
+void setReverse(boolean isReverse)
+boolean isUserSeekable()
+void setIsUserSeekable(boolean isUserSeekable)
+
+void setOnProgressChangedListener(OnProgressChangedListener listener)
+float getLayoutWidth()
+void invalidate()
+```
+
+*IconRoundCornerProgressBar*
+Additional attribute for IconRoundCornerProgressBar
+```
+rcIconSrc
+rcIconSize
+rcIconWidth
+rcIconHeight
+rcIconPadding
+rcIconPaddingLeft
+rcIconPaddingRight
+rcIconPaddingTop
+rcIconPaddingBottom
+rcIconBackgroundColor
+```
+
+Additional Method for IconRoundCornerProgressBar
+```
+int getIconImageResource()
+void setIconImageResource(int resId)
+
+int getIconSize()
+void setIconSize(int size)
+
+int getIconPadding()
+void setIconPadding(int padding)
+int getIconPaddingLeft()
+void setIconPaddingLeft(int padding)
+int getIconPaddingRight()
+void setIconPaddingRight(int padding)
+int getIconPaddingTop()
+void setIconPaddingTop(int padding)
+int getIconPaddingBottom()
+void setIconPaddingBottom(int padding)
+
+int getColorIconBackground()
+void setIconBackgroundColor(int color)
+
+void setOnIconClickListener(OnIconClickListener listener)
+```
+
+*TextRoundCornerProgressBar*
+Additional attribute for TextRoundCornerProgressBar
+```
+rcTextProgressColor
+rcTextProgressSize
+rcTextProgressMargin
+rcTextProgress
+```
+
+Additional method for TextRoundCornerProgressBar
+```
+String getProgressText()
+void setProgressText(String text)
+void setProgress(float progress)
+int getTextProgressColor()
+void setTextProgressColor(int color)
+int getTextProgressSize()
+void setTextProgressSize(int size)
+int getTextProgressMargin()
+void setTextProgressMargin(int margin)
+``` 
+>>>>>>> ddd086f8dabd822b1b54f4fbfb5f1c5fe8ad0caa
  
 Android-RoundCornerProgressBar
 ==============================
@@ -58,8 +173,16 @@ compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
 
 Feature
 ===========================
+<<<<<<< HEAD
 * Customize to your progress and background color, corner radius, padding between inner component
 * Easy to use
+=======
+* Touch Seeking functionality added. (Enable with XML or programmatically.)
+* Round value configurable (recommend dp) for a corner of progress bar 
+* Color changable for a progress
+* Adjust padding range between progress bar and progress or between image icon and progress
+* Easy easy and easy to use
+>>>>>>> ddd086f8dabd822b1b54f4fbfb5f1c5fe8ad0caa
 
 
 Usage
@@ -84,8 +207,14 @@ Include this progress bar library in your layout
         app:rcBackgroundPadding="dimension"
         app:rcReverse="boolean"
         app:rcProgressColor="color"
+<<<<<<< HEAD
         app:rcSecondaryProgressColor="color"
         app:rcBackgroundColor="color" />
+=======
+        app:rcSeekAllowed="boolean"
+        app:rcProgress="integer"
+        app:rcMax="integer" />
+>>>>>>> ddd086f8dabd822b1b54f4fbfb5f1c5fe8ad0caa
 ```
 
 ![Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_01.jpg)
@@ -224,6 +353,7 @@ progress1.setProgressColor(Color.parseColor("#ed3b27"));
 progress1.setProgressBackgroundColor(Color.parseColor("#808080"));
 progress1.setMax(70);
 progress1.setProgress(15);
+progress1.setIsUserSeekable(true);
 
 int progressColor1 = progress1.getProgressColor();
 int backgroundColor1 = progress1.getProgressBackgroundColor();
